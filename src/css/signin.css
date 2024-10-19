@@ -1,0 +1,16 @@
+
+button.btn-1 {
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+.btn:hover{
+    border: inherit;
+ background-color: #3152b4;
+    color: inherit;
+}
+.signin-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

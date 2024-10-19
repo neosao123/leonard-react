@@ -1,0 +1,144 @@
+.inner-contact .big-heading-center {
+  margin: 0 0 70px;
+}
+.big-heading-center {
+  margin: 0 0 30px;
+  padding: 0;
+  font-size: 30px;
+  color: #111636;
+  font-weight: 500;
+  position: relative;
+  font-family: "Poppins", sans-serif !important;
+  text-align: center;
+}
+
+.big-heading-center:before {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 5px;
+  background: #c5c5c5;
+  bottom: -15px;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.big-heading-center:after {
+  position: absolute;
+  width: 30px;
+  height: 5px;
+  background: #414abb;
+  content: "";
+  left: 0;
+  bottom: -30px;
+  margin: 0 auto;
+  right: 0;
+}
+.contact-icon .fa {
+  width: 60px;
+  height: 60px;
+  background: #414abb;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  padding: 13px;
+  color: #fff;
+  margin: 0;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-commen-text h6 {
+  color: #000000;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 15px 0;
+}
+.inner-contact-divt {
+  padding: 25px;
+  border: 1px solid #eee;
+  margin: 0px;
+  text-align: center;
+  height: 250px;
+  transition: 0.5s;
+  box-shadow: 0px 0px 13px 0px #0000001c;
+}
+.contact-commen-text p {
+  color: #000000;
+  text-align: center;
+}
+.inner-contact-divt:hover {
+  border: 1px solid #414abb;
+  box-shadow: none;
+}
+.inner-contact-divt:hover .contact-icon .fa {
+  background: #414abb;
+}
+.inner-contact .big-heading-center {
+  margin: 0 0 70px;
+}
+.inner-contact {
+  background: #fbfbfb url(../assets/images/dot-map.png) no-repeat center;
+  padding-bottom: 60px;
+  padding-top: 100px;
+}
+
+/*inner-abut-text*/
+.inner-abut-text .big-heading-center {
+  font-size: 24px;
+  margin: 0 0 60px;
+}
+.inner-abut-text {
+  margin: 30px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.inner-abut-text-right h5 {
+  color: #1b1b1c;
+  font-size: 20px;
+}
+.inner-abut-text-right ul {
+  margin: 0;
+  padding: 0;
+}
+.inner-abut-text-right ul li p {
+  line-height: 35px;
+}
+.inner-abut-text-right ul li {
+  margin: 0;
+  padding: 0 0 0 25px;
+  list-style-type: none;
+  position: relative;
+}
+.inner-abut-text-right ul li:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 13px;
+  background: #414abb;
+  width: 10px;
+  height: 10px;
+}
+
+/*inner services*/
+.tabs_bg {
+  border: 1px solid #e5e5e5;
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.tab-body {
+  border: 1px solid #e5e5e5;
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.tab {
+  float: left;
+  background-color: #fff;
+  width: 100%;
+}

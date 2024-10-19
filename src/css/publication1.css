@@ -1,0 +1,169 @@
+.publication-up {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+.publication-container {
+  margin: 0 15px;
+  position: relative; /* Required to position the ::before pseudo-element */
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 8px;
+  z-index: 1;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 720px;
+  transition: transform 0.3s ease-in-out; /* Smooth and quick transition */
+}
+
+.publication-container::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0px; /* Adjust this value to move the image more to the left */
+  right: 0;
+  bottom: 0;
+  background-image: url("../assets/images/bub.jpg"); /* Path to your image */
+  background-size: cover;
+  /* background-position: center 113px; */
+  opacity: 0.3;
+  border-radius: 8px; /* Match the container’s border radius */
+  z-index: -1; /* Place the image behind the content */
+}
+.publication-container:hover {
+  transform: translateX(20px); /* Move slightly to the right */
+}
+
+.header-section {
+  padding-bottom: 12px;
+}
+
+.status-indicator span {
+  background-color: #d1d6fa;
+  color: #08065f;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.action-buttons button {
+  border: 1px solid #d1d5db;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+}
+p.text-sm.text-gray-600 {
+  font-size: 13px;
+}
+.big-heading-center:after {
+  position: absolute;
+  width: 30px;
+  height: 5px;
+  background: #414abb;
+  content: "";
+  left: 0;
+  bottom: -30px;
+  margin: 0 auto;
+  right: 0;
+}
+.big-heading-center:before {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 5px;
+  background: #c5c5c5;
+  bottom: -15px;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.big-heading-center {
+  margin: 0 0 30px;
+  padding: 0;
+  font-size: 40px;
+  color: #111636;
+  font-weight: 500;
+  position: relative;
+  font-family: "DM Serif Text", serif;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.license-container {
+  position: relative; /* Required to position the ::before pseudo-element */
+  margin: 0 15px;
+  background-color: white;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 520px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1; /* To ensure the content appears above the image */
+}
+
+.license-container::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0px; /* Adjust this value to move the image more to the left */
+  right: 0;
+  bottom: 0;
+  background-image: url("../assets/images/bub.jpg"); /* Path to your image */
+  background-size: cover;
+  /* background-position: center 113px; */
+  opacity: 0.3;
+  border-radius: 8px; /* Match the container’s border radius */
+  z-index: -1; /* Place the image behind the content */
+}
+
+.license-container:hover {
+  transform: translateX(10px); /* Move slightly to the right */
+}
+.tag {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+.center {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.mb-1 {
+  margin-bottom: 0.25rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .center {
+    flex-direction: column;
+  }
+  .mb-1 {
+    width: 100%;
+  }
+  .mb-4 {
+    width: 100%;
+  }
+  .license-container {
+    max-width: 340px;
+  }
+
+  .publication-container {
+    max-width: 350px;
+  }
+}

@@ -1,0 +1,136 @@
+.service-up {
+  padding-top: 130px;
+  padding-bottom: 60px;
+}
+
+/*news*/
+.services {
+  background: #f9f9f9 url(../assets/images/abt_bg_1.png) no-repeat top right;
+}
+.services-img img {
+  width: 100%;
+}
+.services-img-text h4 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0px;
+  color: #000;
+  text-align: center;
+  padding: 15px 0;
+  transition: 0.5s;
+  background: #f1f1f1;
+}
+.services-text {
+  position: relative;
+}
+.services-img {
+  overflow: hidden;
+}
+.services-img img {
+  transition: 0.5s;
+}
+.services-text:hover .services-img img {
+  transform: scale(1.2);
+  filter: brightness(0.5);
+}
+.services-text:hover .services-img-text h4 {
+  color: #fff;
+  background: #414abb;
+}
+.services-img-text {
+  z-index: 200;
+  position: relative;
+}
+.services-text:before {
+  position: absolute;
+  content: "";
+  border: 1px solid #ddd;
+  width: calc(108%);
+  height: 100%;
+  border-radius: 5px;
+  left: -10px;
+  top: 15px;
+  z-index: -1;
+  transition: 0.5s;
+}
+.services-text:hover:before {
+  border: 1px solid #414abb;
+}
+
+.services .shop-link {
+  width: auto;
+  margin: 0 auto;
+}
+
+.services .big-heading-center {
+  margin: 0 0 60px;
+}
+.more {
+  position: absolute;
+  border: 0;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  display: inline-table;
+  bottom: 10px;
+  z-index: 1;
+  transition: 0.5s;
+}
+.more a {
+  color: #000;
+  background: #ffffff;
+  padding: 7px 10px;
+  font-size: 14px;
+  border-radius: 20px;
+}
+.more a:hover {
+  background: #535ff7;
+  color: #fff;
+}
+.services-text:hover .more {
+  bottom: 100px;
+}
+
+.services .services-btn {
+  background: #ed1c24 !important;
+}
+.tab-body .tabcontent ul {
+  padding: 0;
+  margin: 5px 0 0;
+}
+
+.tab-body .tabcontent ul li {
+  padding: 0 0px 0px 20px;
+  margin: 0;
+  list-style: none;
+  display: inline-block;
+  width: 80%;
+  position: relative;
+}
+.tab-body .tabcontent ul li:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 10px;
+  background: #414abb;
+  width: 10px;
+  height: 10px;
+}
+.tab-body .tabcontent ul li p {
+  line-height: 30px;
+}
+p {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  color: #000;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}

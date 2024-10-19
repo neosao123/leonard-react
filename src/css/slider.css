@@ -1,0 +1,34 @@
+.prev-icon,
+.next-icon {
+  font-size: 24px;
+  color: #fff;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 18px;
+  border-radius: 50%;
+  position: absolute;
+  width: 10px;
+  top: 165px;
+  height: 10px;
+}
+
+.carousel-inner .row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.carousel-inner .carousel-item {
+  transition: transform 0.6s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .carousel-item .col-12 {
+    max-width: 100%;
+  }
+}

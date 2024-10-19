@@ -1,0 +1,39 @@
+.banner-height {
+    margin-top: 70px;
+    height: 250px;
+margin-bottom: 0px !important;
+}
+
+.banner-section{
+  background-color:#f0eded;
+  
+}
+
+.banner-login-img {
+  width: 100%;
+  max-width: 250px;
+  padding-right: 25px;
+}
+.banner-image {
+    height: 250px;
+    width: 100%;
+}
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, rgb(53 53 53 / 67%), rgba(114, 114, 114, 0.6), rgba(219, 219, 219, 0.08));
+    z-index: 1; /* Ensure it sits above the image */
+  }
+  .carousel-item {
+    position: relative; /* This is necessary for the absolute positioning of the gradient */
+    
+  }
+  .baner-button{
+    position: absolute;
+    z-index: 99999;
+    top: 100px;
+    right: 20px;
+  }

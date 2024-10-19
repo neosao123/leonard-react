@@ -1,0 +1,13 @@
+.fot-logo{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+.fooer-logo{
+    width: 100%;
+    max-width: 150px;
+    padding: 5px;
+    border-radius: 10px;
+   
+}

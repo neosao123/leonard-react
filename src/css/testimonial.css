@@ -1,0 +1,98 @@
+/*testi-main*/
+.testi-main {
+  background: url(../assets/images/bg.jpg) no-repeat center;
+  background-size: cover;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.testi-main .small-heading {
+  text-align: center;
+}
+.testi-main .big-heading {
+  text-align: center;
+  margin: 0 0 60px;
+}
+.testi-main .big-heading:before {
+  margin: 0 auto;
+}
+.testi-main .big-heading:after {
+  margin: 0 auto;
+  left: 157px;
+  margin: 0 auto;
+  right: 0;
+}
+.testi-text {
+  text-align: center;
+  border: 2px solid #ebebeb;
+  border-radius: 5px;
+  position: relative;
+  margin: 45px 10px;
+}
+.testi-text h2 {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 0;
+  padding: 50px 10px 10px;
+  line-height: 28px;
+  color: #011a41;
+}
+.testi-text .fa {
+  color: #0f0b56;
+  font-size: 24px;
+  background: #ebebeb;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 18px;
+  position: absolute;
+  right: 0;
+  top: -40px;
+  transition: 0.5s;
+}
+.testi-text:before {
+  position: absolute;
+  content: "";
+  bottom: -36px;
+  right: 0;
+  left: 0;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-top: 35px solid #ebebeb;
+}
+.testi-text:hover .fa {
+  background: #414abb;
+  color: #fff;
+}
+.testi-text:hover:before {
+  border-top: 35px solid #414abb;
+}
+.testi-text-bottom {
+  text-align: center;
+}
+.testi-text-bottom img {
+  width: 100px;
+  border-radius: 50%;
+  float: left;
+  margin-bottom: 15px;
+}
+.testi-text-bottom h3 {
+  font-size: 24px;
+}
+.testi-text-bottom span {
+  font-size: 16px;
+  color: #6c86ff;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.testi-main .bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+  bottom: -13px;
+}
+.testi-main .bx-viewport {
+  height: auto !important;
+  padding: 0 0 25px;
+}
