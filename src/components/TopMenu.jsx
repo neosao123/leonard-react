@@ -23,7 +23,7 @@ const TopMenu = () => {
 
   return (
     <>
-      <nav className="navbar background shadow-lg text-light navbar-expand-lg p-0 fixed-top">
+      <nav className="navbar background shadow-lg text-light navbar-expand-lg p-0 sticky-top shadow-lg">
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <Link className="navbar-brand" to="/">
             <img alt="logo" className="top-logo" src={logo} />

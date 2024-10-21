@@ -8,6 +8,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import Search from "../components/Search";
 import { data } from "../data";
 import Slider from "react-slick";
+import * as api from "../services/index";
 
 import img1 from "../asset/img1.png";
 import lpi1 from "../asset/lpi.jpg";
@@ -33,14 +34,16 @@ import Publication from "./product/Publication";
 import License from "./product/License";
 import Testimonial from "./product/Testimonial";
 import useCartStore from "../zustand/useCardstore";
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 // import AboutUs from "./product/Aboutus";
 
 const Support = lazy(() => import("../components/Support"));
 const Banner = lazy(() => import("../components/carousel/Banner"));
+const Ebook = lazy(() => import("../components/sliders/Ebook"))
 
 const books = [
   { title: "Kecemerlangan Emosi Di Tempat Kerja", image: img1 },
-
   { title: "Emotional Excellence in the Workplace", image: img4 },
 ];
 
@@ -94,7 +97,7 @@ const Card = ({ title, author, rating, image }) => {
           </div>
 
           <div className="button-head justify-content-start">
-            <Link className="dedcription-btn" to="/cart">
+            <Link className="dedcription-btn add-to-cart-border-color" to="/cart">
               <span className="name-descripeion" onClick={handleAddToCart}>
                 Add to cart
               </span>
@@ -110,204 +113,220 @@ const Card = ({ title, author, rating, image }) => {
   );
 };
 
-class HomeView extends Component {
-  booksSliderRef = React.createRef();
-  ebooksSliderRef = React.createRef();
-  lpiSliderRef = React.createRef();
-  serviceSliderRef = React.createRef();
+const HomeView = () => {
+  // booksSliderRef = React.createRef();
+  // ebooksSliderRef = React.createRef();
+  // lpiSliderRef = React.createRef();
+  // serviceSliderRef = React.createRef();
 
-  nextSlide = (sliderRef) => {
-    sliderRef.current.slickNext();
-  };
+  // nextSlide = (sliderRef) => {
+  //   sliderRef.current.slickNext();
+  // };
 
-  prevSlide = (sliderRef) => {
-    sliderRef.current.slickPrev();
-  };
+  // prevSlide = (sliderRef) => {
+  //   sliderRef.current.slickPrev();
+  // };
 
-  render() {
-    const sliderSettings = {
-      dots: false,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      leftMode: true, // Ensure center mode is false
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            infinite: false,
-            dots: false,
-          },
-        },
-        {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: false,
-            dots: false,
-          },
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 599,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 500,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-      ],
-    };
+  // render() {
+  //   const sliderSettings = {
+  //     dots: false,
+  //     infinite: false,
+  //     speed: 500,
+  //     slidesToShow: 5,
+  //     slidesToScroll: 1,
+  //     leftMode: true, // Ensure center mode is false
+  //     responsive: [
+  //       {
+  //         breakpoint: 1024,
+  //         settings: {
+  //           slidesToShow: 4,
+  //           slidesToScroll: 1,
+  //           infinite: false,
+  //           dots: false,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 992,
+  //         settings: {
+  //           slidesToShow: 3,
+  //           slidesToScroll: 1,
+  //           infinite: false,
+  //           dots: false,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 768,
+  //         settings: {
+  //           slidesToShow: 2,
+  //           slidesToScroll: 1,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 600,
+  //         settings: {
+  //           slidesToShow: 1,
+  //           slidesToScroll: 1,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 599,
+  //         settings: {
+  //           slidesToShow: 2,
+  //           slidesToScroll: 1,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 500,
+  //         settings: {
+  //           slidesToShow: 1,
+  //           slidesToScroll: 1,
+  //         },
+  //       },
+  //     ],
+  //   };
 
-    return (
-      <React.Fragment>
-        <Banner className="mb-3" id="carouselHomeBanner" data={data.banner} />
 
-        <div className="book-slider">
-          <div className="d-flex justify-content-start align-items-center">
-            <div className="">
-              <h1 className="title">E-Books</h1>
-            </div>
+  const { isPending, error, data } = useQuery({
+    queryKey: ['products'],
+    queryFn: () => api.getBooksData()
+  })
+  if (error) {
+    console.log("error:", error)
+  }
+  console.log("data:", data)
+
+
+
+  return (
+    <>
+      <Banner className="mb-3" id="carouselHomeBanner" />
+
+      {data?.data?.length > 0 && data?.data?.map((el) => {
+        return <Ebook key={el?.category_id} data={el} />
+      })}
+
+      {/* <div className="book-slider">
+        <div className="d-flex justify-content-start align-items-center">
+          <div className="">
+            <h1 className="title">E-Books</h1>
           </div>
-          <Slider ref={this.ebooksSliderRef} {...sliderSettings}>
+        </div> */}
+      {/* <Slider ref={this.ebooksSliderRef} {...sliderSettings}>
             {ebooks.map((ebook, index) => (
               <Card key={index} {...ebook} />
             ))}
-          </Slider>
+          </Slider> */}
 
-          <div className="slider-navigation">
-            <button
-              className="prev-button"
-              onClick={() => this.prevSlide(this.ebooksSliderRef)}
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              className="next-button"
-              onClick={() => this.nextSlide(this.ebooksSliderRef)}
-            >
-              <FaChevronRight />
-            </button>
+      {/* <div className="slider-navigation">
+          <button
+            className="prev-button"
+            onClick={() => this.prevSlide(this.ebooksSliderRef)}
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            className="next-button"
+            onClick={() => this.nextSlide(this.ebooksSliderRef)}
+          >
+            <FaChevronRight />
+          </button>
+        </div> */}
+      {/* </div> */}
+
+      <div className="book-slider">
+        <div className="d-flex justify-content-start align-items-center">
+          <div className="">
+            <h1 className="title">Services</h1>
           </div>
         </div>
 
-        <div className="book-slider">
-          <div className="d-flex justify-content-start align-items-center">
-            <div className="">
-              <h1 className="title">Services</h1>
-            </div>
-          </div>
+        {/* <Slider ref={this.serviceSliderRef} {...sliderSettings}>
+          {service.map((service, index) => (
+            <Card key={index} {...service} />
+          ))}
+        </Slider> */}
 
-          <Slider ref={this.serviceSliderRef} {...sliderSettings}>
-            {service.map((service, index) => (
-              <Card key={index} {...service} />
-            ))}
-          </Slider>
+        <div className="slider-navigation">
+          <button
+            className="prev-button"
+            onClick={() => this.prevSlide(this.serviceSliderRef)}
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            className="next-button"
+            onClick={() => this.nextSlide(this.serviceSliderRef)}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      </div>
 
-          <div className="slider-navigation">
-            <button
-              className="prev-button"
-              onClick={() => this.prevSlide(this.serviceSliderRef)}
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              className="next-button"
-              onClick={() => this.nextSlide(this.serviceSliderRef)}
-            >
-              <FaChevronRight />
-            </button>
+      <div className="book-slider ">
+        <div className="d-flex justify-content-start align-items-center">
+          <div className="">
+            <h1 className="title">Books</h1>
           </div>
         </div>
+        {/* <Slider ref={this.booksSliderRef} {...sliderSettings}>
+          {books.map((book, index) => (
+            <Card key={index} {...book} />
+          ))}
+        </Slider> */}
 
-        <div className="book-slider ">
-          <div className="d-flex justify-content-start align-items-center">
-            <div className="">
-              <h1 className="title">Books</h1>
-            </div>
-          </div>
-          <Slider ref={this.booksSliderRef} {...sliderSettings}>
-            {books.map((book, index) => (
-              <Card key={index} {...book} />
-            ))}
-          </Slider>
+        <div className="slider-navigation">
+          <button
+            className="prev-button"
+            onClick={() => this.prevSlide(this.booksSliderRef)}
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            className="next-button"
+            onClick={() => this.nextSlide(this.booksSliderRef)}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      </div>
 
-          <div className="slider-navigation">
-            <button
-              className="prev-button"
-              onClick={() => this.prevSlide(this.booksSliderRef)}
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              className="next-button"
-              onClick={() => this.nextSlide(this.booksSliderRef)}
-            >
-              <FaChevronRight />
-            </button>
+      <div className="book-slider">
+        <div className="d-flex justify-content-start align-items-center">
+          <div className="">
+            <h1 className="title">LPI</h1>
           </div>
         </div>
+        {/* <Slider ref={this.lpiSliderRef} {...sliderSettings}>
+          {lpi.map((lpi, index) => (
+            <Card key={index} {...lpi} />
+          ))}
+        </Slider> */}
 
-        <div className="book-slider">
-          <div className="d-flex justify-content-start align-items-center">
-            <div className="">
-              <h1 className="title">LPI</h1>
-            </div>
-          </div>
-          <Slider ref={this.lpiSliderRef} {...sliderSettings}>
-            {lpi.map((lpi, index) => (
-              <Card key={index} {...lpi} />
-            ))}
-          </Slider>
+        {/* <div className="slider-navigation">
+          <button
+            className="prev-button"
+            onClick={() => this.prevSlide(this.lpiSliderRef)}
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            className="next-button"
+            onClick={() => this.nextSlide(this.lpiSliderRef)}
+          >
+            <FaChevronRight />
+          </button>
+        </div> */}
+      </div>
 
-          <div className="slider-navigation">
-            <button
-              className="prev-button"
-              onClick={() => this.prevSlide(this.lpiSliderRef)}
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              className="next-button"
-              onClick={() => this.nextSlide(this.lpiSliderRef)}
-            >
-              <FaChevronRight />
-            </button>
-          </div>
-        </div>
+      <AboutUs />
 
-        <AboutUs />
-
-        <Services />
-        <Publication />
-        {/* <License/> */}
-        <Testimonial />
-      </React.Fragment>
-    );
-  }
+      <Services />
+      <Publication />
+      {/* <License/> */}
+      <Testimonial />
+    </>
+  );
 }
+
 
 export default HomeView;

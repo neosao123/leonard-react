@@ -32,7 +32,7 @@ const SignInForm = (props) => {
         icon={FaEnvelope}
         validate={[required, email]}
         required={true}
-        className="mb-3"
+        className="mb-4"
       />
       <Field
         name="password"
@@ -45,12 +45,12 @@ const SignInForm = (props) => {
         required={true}
         maxLength="20"
         minLength="8"
-        className="mb-3"
+        className="mb-4"
       />
       <div className="d-grid">
         <button
           type="submit"
-          className="btn theme-1 mb-3 text-light"
+          className="btn theme-1 mb-4 text-light"
           disabled={submitting}
         >
           Log In
