@@ -10,10 +10,10 @@ const SignInView = () => {
     alert(JSON.stringify(values));
   };
   return (
-    <div className="container cart-section mb-3">
+    <div className="container cart-section margin-y-direction">
       <div className="row ">
-            <div className="signin-form ">
-          <div className="col-md-6 p-5 cat-bg-2">
+        <div className="signin-form">
+          <div className="col-md-6 p-5 cat-bg-2 shadow rounded">
             <h4 className="text-center">Sign In</h4>
             <SignInForm onSubmit={onSubmit} />
           </div>

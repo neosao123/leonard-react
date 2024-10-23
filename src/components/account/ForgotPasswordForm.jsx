@@ -35,7 +35,7 @@ const ForgotPasswordForm = (props) => {
       <div className="d-grid">
         <button
           type="submit"
-          className="btn btn-primary mb-3"
+          className="btn btn-primary mb-3 mt-3"
           disabled={submitting}
         >
           Submit

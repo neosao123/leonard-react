@@ -46,7 +46,7 @@ a{
 
   .name-descripeion {
     position: relative;
-    z-index: 9999;
+    z-index: 2;
     font-weight: 500;
     font-size: 13px;
   }

@@ -8,6 +8,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css"
 import "./App.min.css";
+import PublicRoute from "./routes/publicRoutes";
+import PrivateRoute from "./routes/privateRoutes";
 //const Header = lazy(() => import("./components/Header"));
 //const TopMenu = lazy(() => import("./components/TopMenu"));
 const HomeView = lazy(() => import("./views/Home"));
@@ -41,6 +43,64 @@ const BlogDetailView = lazy(() => import("./views/blog/Detail"));
 function App() {
   return (
     <BrowserRouter basename="shop">
+      {/* <div>
+        <TopMenu />
+      </div>
+      <div>
+        <Suspense
+          fallback={
+            <div className="text-white text-center mt-3">Loading...</div>
+          }
+        >
+          <Routes>
+            <Route exact path="/" element={<HomeView />} />
+            <Route exact path="/account/signin" element={<SignInView />} />
+            <Route exact path="/account/signup" element={<SignUpView />} />
+            <Route
+              exact
+              path="/account/forgotpassword"
+              element={<ForgotPasswordView />}
+            />
+            <Route exact path="/account/profile" element={<MyProfileView />} />
+            <Route exact path="/account/orders" element={<OrdersView />} />
+            <Route exact path="/account/wishlist" element={<WishlistView />} />
+            <Route
+              exact
+              path="/account/notification"
+              element={<NotificationView />}
+            />
+            <Route exact path="/category" element={<ProductListView />} />
+
+
+            <Route exact path="/about" element={<About1 />} />
+            <Route exact path="/services" element={<Service1 />} />
+            <Route exact path="/publication" element={<Publication1 />} />
+            <Route exact path="/license" element={<License1 />} />
+            <Route exact path="/contact" element={<Contact1 />} />
+
+
+
+
+
+
+            <Route exact path="/product/detail" element={<ProductDetailView />} />
+            <Route exact path="/star/zone" element={<StarZoneView />} />
+            <Route exact path="/cart" element={<CartView />} />
+            <Route exact path="/checkout" element={<CheckoutView />} />
+            <Route exact path="/invoice" element={<InvoiceView />} />
+            <Route exact path="/documentation" element={<DocumentationView />} />
+            <Route exact path="/contact-us" element={<ContactUsView />} />
+            <Route exact path="/support" element={<SupportView />} />
+            <Route exact path="/blog" element={<BlogView />} />
+            <Route exact path="/blog/detail" element={<BlogDetailView />} />
+            <Route exact path="/500" element={<InternalServerErrorView />} />
+            <Route path="*" element={<NotFoundView />} />
+          </Routes>
+        </Suspense>
+      </div>
+      <div>
+        <Footer />
+      </div> */}
       <React.Fragment>
         {/* <Header /> */}
         <TopMenu />
@@ -50,48 +110,48 @@ function App() {
           }
         >
           <Routes>
-            <Route exact path="/" element={<HomeView/>} />
-            <Route exact path="/account/signin" element={<SignInView/>} />
-            <Route exact path="/account/signup" element={<SignUpView/>} />
+            <Route exact path="/" element={<HomeView />} />
+            <Route exact path="/account/signin" element={<PublicRoute><SignInView /></PublicRoute>} />
+            <Route exact path="/account/signup" element={<PublicRoute><SignUpView /></PublicRoute>} />
             <Route
               exact
               path="/account/forgotpassword"
-              element={<ForgotPasswordView/>}
+              element={<ForgotPasswordView />}
             />
-            <Route exact path="/account/profile" element={<MyProfileView/>} />
-            <Route exact path="/account/orders" element={<OrdersView/>} />
-            <Route exact path="/account/wishlist" element={<WishlistView/>} />
+            <Route exact path="/account/profile" element={<PrivateRoute><MyProfileView /></PrivateRoute>} />
+            <Route exact path="/account/orders" element={<OrdersView />} />
+            <Route exact path="/account/wishlist" element={<WishlistView />} />
             <Route
               exact
               path="/account/notification"
-              element={<NotificationView/>}
+              element={<NotificationView />}
             />
-            <Route exact path="/category" element={<ProductListView/>} />
+            <Route exact path="/category" element={<ProductListView />} />
 
 
-            <Route exact path="/about" element={<About1/>} />
-            <Route exact path="/services" element={<Service1/>} />
-            <Route exact path="/publication" element={<Publication1/>} />
-            <Route exact path="/license" element={<License1/>} />
-            <Route exact path="/contact" element={<Contact1/>} />
-
-
-
+            <Route exact path="/about" element={<About1 />} />
+            <Route exact path="/services" element={<Service1 />} />
+            <Route exact path="/publication" element={<Publication1 />} />
+            <Route exact path="/license" element={<License1 />} />
+            <Route exact path="/contact" element={<Contact1 />} />
 
 
 
-            <Route exact path="/product/detail" element={<ProductDetailView/>} />
-            <Route exact path="/star/zone" element={<StarZoneView/>} />
-            <Route exact path="/cart" element={<CartView/>} />
+
+
+
+            <Route exact path="/product/detail" element={<ProductDetailView />} />
+            <Route exact path="/star/zone" element={<StarZoneView />} />
+            <Route exact path="/cart" element={<CartView />} />
             <Route exact path="/checkout" element={<CheckoutView />} />
             <Route exact path="/invoice" element={<InvoiceView />} />
-            <Route exact path="/documentation" element={<DocumentationView/>} />
-            <Route exact path="/contact-us" element={<ContactUsView/>} />
-            <Route exact path="/support" element={<SupportView/>} />
-            <Route exact path="/blog" element={<BlogView/>} />
-            <Route exact path="/blog/detail" element={<BlogDetailView/>} />
-            <Route exact path="/500" element={<InternalServerErrorView/>} />
-            <Route path="*" element={<NotFoundView/>} />
+            <Route exact path="/documentation" element={<DocumentationView />} />
+            <Route exact path="/contact-us" element={<ContactUsView />} />
+            <Route exact path="/support" element={<SupportView />} />
+            <Route exact path="/blog" element={<BlogView />} />
+            <Route exact path="/blog/detail" element={<BlogDetailView />} />
+            <Route exact path="/500" element={<InternalServerErrorView />} />
+            <Route path="*" element={<NotFoundView />} />
           </Routes>
         </Suspense>
         <Footer />

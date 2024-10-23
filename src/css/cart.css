@@ -1,12 +1,23 @@
-.cart-section{
+.cart-section {
     margin-top: 110px;
 }
-.card-footers{
+
+.card-footers {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.carts{
+.vertical-margin {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.carts {
     margin-top: 70px;
+}
+
+.margin-y-direction {
+    margin-top: 100px;
+    margin-bottom: 100px;
 }

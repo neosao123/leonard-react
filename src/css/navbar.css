@@ -4,6 +4,17 @@
   padding: 0.75rem 1rem;
 }
 
+.sign-in-btn:hover {
+  background-color: white !important;
+  color: #3152b4 !important;
+  border: 2px solid #3152b4 !important;
+}
+
+.signup-link {
+  color: #3152b4;
+  text-decoration: underline;
+}
+
 .theme {
   background-color: #001a66;
 }
@@ -15,6 +26,7 @@
 .background {
   background-color: #3152b4;
 }
+
 /* Custom Text Colors */
 .text-theme-1 {
   color: #3152b4;
@@ -23,6 +35,7 @@
 .text-theme {
   color: #3152b4;
 }
+
 #ecf5ffa8 .cat-bg-1 {
   background-color: white;
 }
@@ -30,9 +43,11 @@
 .cat-bg-2 {
   background-color: #ecf5ffa3;
 }
+
 .cat-bg-3 {
   background-color: #e4f1ff;
 }
+
 .cat-bg-4 {
   background-color: #c4ddf8c4;
 }
@@ -43,7 +58,8 @@
 
 .navbar {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: "Poppins", sans-serif; /* Modern font */
+  font-family: "Poppins", sans-serif;
+  /* Modern font */
 }
 
 .navbar .nav-link {
@@ -54,38 +70,49 @@
 }
 
 .navbar .nav-link {
-  position: relative; /* Required for the absolute positioning of the pseudo-element */
-  color: #fff; /* Ensure the text color is white */
+  position: relative;
+  /* Required for the absolute positioning of the pseudo-element */
+  color: #fff;
+  /* Ensure the text color is white */
 }
 
 .navbar .nav-link:hover {
-  color: #313999; /* Change color on hover */
+  color: #313999;
+  /* Change color on hover */
 }
 
 li.nav-item {
-  padding: 10px; /* Padding for each nav item */
+  padding: 10px;
+  /* Padding for each nav item */
 }
 
 .navbar .nav-link::after {
   content: "";
   position: absolute;
-  width: 0; /* Start with zero width */
+  width: 0;
+  /* Start with zero width */
   height: 2px;
-  background: white; /* Change background color of the line */
-  bottom: -5px; /* Position below the text */
+  background: white;
+  /* Change background color of the line */
+  bottom: -5px;
+  /* Position below the text */
   left: 0;
-  transition: width 0.3s ease; /* Smooth transition for the line width */
+  transition: width 0.3s ease;
+  /* Smooth transition for the line width */
 }
 
 /* Show the underline effect on hover */
 .navbar .nav-link:hover::after {
-  width: 100%; /* Extend the line width to full when hovered */
+  width: 100%;
+  /* Extend the line width to full when hovered */
 }
 
 /* Show the underline effect when the link is active */
 .navbar .nav-link.active::after {
-  width: 100%; /* Extend the line width to full when active */
-  color: #313999; /* Change color of the active link if needed */
+  width: 100%;
+  /* Extend the line width to full when active */
+  color: #313999;
+  /* Change color of the active link if needed */
 }
 
 .dropdown-menu.theme {
@@ -117,11 +144,13 @@ li.nav-item {
   border-radius: 10px;
   margin-left: 10px;
 }
+
 .position-relative .btn.theme {
   background-color: transparent;
   border: none;
   position: relative;
 }
+
 .position-relative .btn.theme .badge {
   position: absolute;
   top: -10px;
