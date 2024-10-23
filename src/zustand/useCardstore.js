@@ -4,24 +4,16 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 const useCartStore = create(
   persist(
     (set) => ({
-      cart: [],
+      cart: {},
+      cartuid: "",
 
-      addToCart: (item) =>
+      updateCardUID: (uid) => set((state) => {
+        return { cartuid: uid }
+      }),
+
+      addToCart: (cart) =>
         set((state) => {
-          const existingItem = state?.cart.find(
-            (cartItem) => cartItem?.id === item?.id
-          );
-          if (existingItem) {
-            return {
-              cart: state.cart.map((cartItem) =>
-                cartItem?.id === item?.id
-                  ? { ...cartItem, quantity: cartItem.quantity + 1 }
-                  : cartItem
-              ),
-            };
-          }
-
-          return { cart: [...state.cart, { ...item, quantity: 1 }] };
+          return { cart: cart };
         }
         ),
 

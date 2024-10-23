@@ -60,9 +60,9 @@ const TopMenu = () => {
                   className="cart bg-light"
                 >
                   <FaShoppingCart size={15} className="text-theme" />
-                  {cart.length > 0 && (
+                  {cart?.items?.length > 0 && (
                     <div className="position-absolute top-5 top-lg-1 start-50 start-lg-100 translate-middle badge bg-danger rounded-circle">
-                      {cart.length}
+                      {cart?.items?.length}
                     </div>
                   )}
                 </Link>
@@ -74,7 +74,7 @@ const TopMenu = () => {
                   className="cart bg-light p-0"
                   id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
                 >
-                  {isAuthorized == true && user?.avatar == null ? <><img width={40} height={40} className="rounded-circle" src="https://th.bing.com/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?rs=1&pid=ImgDetMain" alt="image" /></> : <RiAccountCircleFill size={40} className="text-theme" />}
+                  {isAuthorized == true && user?.avatar == null ? <><img width={40} height={40} style={{ objectFit: "cover" }} className="rounded-circle" src="https://th.bing.com/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?rs=1&pid=ImgDetMain" alt="image" /></> : <RiAccountCircleFill size={40} className="text-theme" />}
                 </Link>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 opacity-1" aria-labelledby="dropdownMenuButton1"
                   style={{
@@ -82,7 +82,7 @@ const TopMenu = () => {
                   }}
                 >
                   {isAuthorized == true && <li className="d-flex justify-content-start px-3">
-                    <p className="mb-0">{user?.avatar == null ? <><img width={40} height={40} className="me-2 rounded-circle" src="https://th.bing.com/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?rs=1&pid=ImgDetMain" alt="image" /></> : <RiAccountCircleFill size={40} className="me-2" />}{user?.first_name + " " + user?.last_name}</p>
+                    <p className="mb-0">{user?.avatar == null ? <><img width={40} height={40} style={{ objectFit: "cover" }} className="me-2 rounded-circle" src="https://th.bing.com/th/id/OIP.IGNf7GuQaCqz_RPq5wCkPgHaLH?rs=1&pid=ImgDetMain" alt="image" /></> : <RiAccountCircleFill size={40} className="me-2" />}{user?.first_name + " " + user?.last_name}</p>
                   </li>}
                   {isAuthorized == true && <hr />}
                   {isAuthorized == true && <li className="d-flex justify-content-start px-3">
@@ -195,9 +195,9 @@ const TopMenu = () => {
                   className="cart bg-light"
                 >
                   <FaShoppingCart size={15} className="text-theme" />
-                  {cart.length > 0 && (
+                  {cart?.items?.length > 0 && (
                     <div className="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle">
-                      {cart.length}
+                      {cart?.items?.length}
                     </div>
                   )}
                 </Link>

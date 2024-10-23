@@ -5,6 +5,54 @@ html {
   font-family: "Poppins", sans-serif !important;
 }
 
+.avatar-label {
+  color: white;
+  z-index: 1;
+}
+
+.fixed-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3 !important;
+  background-color: rgba(100, 100, 100, 0.7);
+}
+
+.close-icon {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  cursor: pointer;
+}
+
+.avatar-div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(100, 100, 100, 0.7);
+  display: none !important;
+}
+
+.avatar-flex {
+  display: flex !important;
+}
+
+.text-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 100%;
+  white-space: normal;
+  min-height: 45px;
+}
+
+
 .required:after {
   content: " *";
   color: red;
