@@ -6,6 +6,7 @@ import {
 } from '@tanstack/react-query'
 //import "./index.css";
 import App from "./App";
+import toast, { Toaster } from 'react-hot-toast';
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -24,6 +25,7 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <Provider store={store}>
       <App />
+      <Toaster />
     </Provider>
   </QueryClientProvider>
 );

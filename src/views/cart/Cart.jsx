@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { Link } from "react-router-dom";
-import { FaTrash, FaHeart, FaPlus, FaMinus } from "react-icons/fa"; // Importing icons
+import { FaTrash, FaHeart, FaPlus, FaMinus, FaShoppingCart } from "react-icons/fa"; // Importing icons
 import "../../css/navbar.css";
 import "../../css/cart.css";
 import "../../css/signin.css";
@@ -21,6 +21,7 @@ const CartView = () => {
   const incrementQuantity = useCartStore((state) => state.incrementQuantity);
   const decrementQuantity = useCartStore((state) => state.decrementQuantity);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
+  // const clearCart =
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -28,10 +29,10 @@ const CartView = () => {
   return (
     <div>
       <div className="cart-section text-white d-flex justify-content-center align-items-center ">
-        {/* <h1 className="display-6">Shopping Cart</h1> */}
+        <h5 className="display-6">Shopping Cart</h5>
       </div>
       <div className="container ">
-        <div className="row">
+        {cart?.length > 0 ? <div className="row">
           <div className="col-md-12 mb-3">
             <div className="card">
               <div className="table-responsive">
@@ -69,88 +70,80 @@ const CartView = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cart.length === 0 ? (
-                      <tr>
-                        <td colSpan="4" className="text-center">
-                          Your cart is empty.
-                        </td>
-                      </tr>
-                    ) : (
-                      <>
-                        {cart.map((item) => (
-                          <tr key={item.id}>
-                            <td className="py-4">
-                              <div className="row">
-                                <div className="col-3 d-none d-md-block">
-                                  <img
-                                    src="../../images/products/tshirt_red_480x400.webp"
-                                    width="80"
-                                    alt="..."
-                                  />
-                                </div>
-                                <div className="col">
-                                  <Link
-                                    to="/product/detail"
-                                    className="text-decoration-none"
-                                  >
-                                    {item.name}
-                                  </Link>
-                                  <p className="small text-muted">
-                                    Size: XL, Color: blue, Brand: XYZ
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-
-                            <td className="p-3">
-                              <div className="input-group input-group-sm mw-140">
-                                <button
-                                  className="btn theme btn-1 text-white"
-                                  type="button"
-                                  onClick={() => decrementQuantity(item.id)}
-                                >
-                                  <FaMinus /> {/* Using React Icon */}
-                                </button>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  value={item.quantity}
-                                  readOnly
+                    <>
+                      {cart.length > 0 && cart.map((item) => (
+                        <tr key={item.id}>
+                          <td className="py-4">
+                            <div className="row">
+                              <div className="col-3 d-none d-md-block">
+                                <img
+                                  src={`${process.env.REACT_APP_PHOTO_URL}${item?.product_thumbnail}`}
+                                  width="80"
+                                  alt="..."
                                 />
-                                <button
-                                  className="btn theme btn-1 text-white"
-                                  type="button"
-                                  onClick={() => incrementQuantity(item.id)}
-                                >
-                                  <FaPlus /> {/* Using React Icon */}
-                                </button>
                               </div>
-                            </td>
+                              <div className="col">
+                                <Link
+                                  to="/product/detail"
+                                  className="text-decoration-none"
+                                >
+                                  {item?.name}
+                                </Link>
+                                <p className="small text-muted">
+                                  {item?.description}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
 
-                            <td className="p-3">
-                              <var className="price">
-                                ${(item.price * item.quantity).toFixed(2)}
-                              </var>
-                              <small className="d-block text-muted">
-                                ${item.price.toFixed(2)} each
-                              </small>
-                            </td>
+                          <td className="p-3">
+                            <div className="input-group input-group-sm mw-140">
+                              <button
+                                className="btn theme btn-1 text-white"
+                                type="button"
+                                onClick={() => decrementQuantity(item.id)}
+                              >
+                                <FaMinus /> {/* Using React Icon */}
+                              </button>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={item.quantity}
+                                readOnly
+                              />
+                              <button
+                                className="btn theme btn-1 text-white"
+                                type="button"
+                                onClick={() => incrementQuantity(item.id)}
+                              >
+                                <FaPlus /> {/* Using React Icon */}
+                              </button>
+                            </div>
+                          </td>
 
-                            <td className="p-2">
-                              {/* <button className="btn btn-sm btn-outline-secondary me-2">
+                          <td className="p-3">
+                            <var className="price">
+                              RM {(item.price * item.quantity).toFixed(2)}
+                            </var>
+                            <small className="d-block text-muted">
+                              RM {item.price.toFixed(2)} each
+                            </small>
+                          </td>
+
+                          <td className="p- text-ce">
+                            {/* <button className="btn btn-sm btn-outline-secondary me-2">
                 <FaHeart /> 
               </button> */}
-                              <button
-                                className="btn btn-sm btn-outline-secondary"
-                                onClick={() => removeFromCart(item.id)}
-                              >
-                                <FaTrash /> {/* Using React Icon */}
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </>
-                    )}
+                            <button
+                              className="btn btn-sm btn-outline-secondary"
+                              onClick={() => removeFromCart(item.id)}
+                            >
+                              <FaTrash /> {/* Using React Icon */}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </>
                   </tbody>
                 </table>
               </div>
@@ -181,26 +174,29 @@ const CartView = () => {
               <div className="card-body">
                 <dl className="row border-bottom">
                   <dt className="col-6">Total price:</dt>
-                  <dd className="col-6 text-end">${totalPrice.toFixed(2)}</dd>
+                  <dd className="col-6 text-end">RM {totalPrice.toFixed(2)}</dd>
 
                   <dt className="col-6 text-success">
                     Coupon:{" "}
                     <span className="small text-muted">EXAMPLECODE</span>{" "}
                   </dt>
-                  <dd className="col-6 text-success text-end">-$68</dd>
+                  <dd className="col-6 text-success text-end">- RM 68</dd>
                 </dl>
                 <dl className="row">
                   <dt className="col-6">Total:</dt>
                   <dd className="col-6 text-end h5">
-                    <strong>${totalPrice.toFixed(2)}</strong>
+                    <strong>RM {totalPrice.toFixed(2)}</strong>
                   </dd>
                 </dl>
                 <hr />
-             
+
               </div>
             </div>
           </div>
-        </div>
+        </div> : <div className="mb-4 d-flex flex-column justify-content-center align-items-center">
+          <FaShoppingCart size={100} />
+          <h5 className="mt-4">Your Cart is Empty.</h5>
+        </div>}
       </div>
     </div>
   );

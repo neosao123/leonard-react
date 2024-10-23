@@ -4,9 +4,26 @@ html {
   padding: 0;
   font-family: "Poppins", sans-serif !important;
 }
+
 .required:after {
   content: " *";
   color: red;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: #000000;
+  width: 100%;
+  cursor: pointer;
+}
+
+.profile-link:hover {
+  color: #3151b4;
+
+}
+
+.start-50 {
+  left: 85% !important;
 }
 
 .google-maps {
@@ -91,13 +108,16 @@ html {
 .accordion-icon-button.collapsed {
   border-bottom: none;
 }
+
 .btn {
   border-radius: 40px;
   color: white;
 }
+
 .btn:hover {
   color: white !important;
 }
+
 .card,
 .card-header {
   border-radius: 0px;

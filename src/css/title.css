@@ -3,8 +3,8 @@
     font-size: 24px;
     font-weight: bold;
     color: #3152b4; 
-    margin: 20px 0; 
-    padding: 10px; 
+    /* margin: 20px 0;  */
+    padding:  10px; 
     transition: color 0.3s ease; 
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Show shadow initially */
 }
@@ -13,9 +13,9 @@
     content: '';
     position: absolute;
     width: 100%; /* Full width of the title */
-    height: 1px; /* Height of the line */
+    height: 2px; /* Height of the line */
     background: #3152b4; /* Line color */
-    bottom: -10px; /* Position the line below the text */
+    bottom: 0px; /* Position the line below the text */
     left: 0;
     transition: background 0.3s ease; 
 }

@@ -14,7 +14,6 @@ a {
 
 .dedcription-btn {
   width: 100%;
-  max-width: 125px;
   position: relative;
   display: inline-block;
   border-radius: 30px;
@@ -51,7 +50,7 @@ a {
 
 .name-descripeion {
   position: relative;
-  z-index: 9999;
+  z-index: 2;
   font-weight: 500;
   font-size: 13px;
 }

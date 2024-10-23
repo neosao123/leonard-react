@@ -7,6 +7,7 @@ import {
   FaShoppingCart,
   FaTimes,
 } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import "../../css/sidebar.css";
 import { Link } from "react-router-dom";
 import useCartStore from "../../zustand/useCardstore";
@@ -21,6 +22,7 @@ const Sidebar = ({ isOpen, handleSidebarToggle, cartItems }) => {
   const incrementQuantity = useCartStore((state) => state.incrementQuantity);
   const decrementQuantity = useCartStore((state) => state.decrementQuantity);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const clearCart = useCartStore((state) => state.clearCart);
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -53,29 +55,38 @@ const Sidebar = ({ isOpen, handleSidebarToggle, cartItems }) => {
           <FiChevronRight size={19} className="arrow-icon" />
           <h5 className="cart-title">In your cart</h5>
         </Link>
-        <button className="close-btn" onClick={handleSidebarToggle}>
-          <FaTimes />
-        </button>
+        <div>
+          <span onClick={() => clearCart()}>
+            <MdDelete size={25} />
+          </span>
+
+          <button className="close-btn" onClick={handleSidebarToggle}>
+            <FaTimes />
+          </button>
+        </div>
       </div>
       <div className="sidebar-content">
         {cartItems.length === 0 ? (
-          <p className="empty-cart">Your cart is empty.</p>
+          <div className="d-flex flex-column align-items-center justify-content-center">
+            <FaShoppingCart size={25} />
+            <p className="">Your cart is empty.</p>
+          </div>
         ) : (
           <div className="cart-items-list">
             {cartItems.map((item, index) => (
               <div key={index} className="cart-item-card">
                 <div className="cart-item-image">
-                  <img src={img} alt={item.name} />
+                  <img src={`${process.env.REACT_APP_PHOTO_URL}${item?.product_thumbnail}`} alt={item?.name} />
                 </div>
                 <div className="cart-item-info">
                   <p className="cart-item-title">{item.name}</p>
                   <p className="cart-item-price mt-2">
                     {" "}
                     <var className="price">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      RM {(item.price * item.quantity).toFixed(2)}
                     </var>
                     <small className="d-block text-muted">
-                      ${item.price.toFixed(2)} each
+                      RM {item.price.toFixed(2)} each
                     </small>
                   </p>
                   <div className="input-group increase ">
@@ -102,6 +113,7 @@ const Sidebar = ({ isOpen, handleSidebarToggle, cartItems }) => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
+                        padding:"0px 8px"
                       }}
                     />
                     <button
@@ -132,11 +144,11 @@ const Sidebar = ({ isOpen, handleSidebarToggle, cartItems }) => {
       </div>
       <div className="sidebar-first-footer">
         <h5 className="cart-title">Total Price:</h5>
-        <p>${totalPrice.toFixed(2)}</p>
+        <p>RM {totalPrice.toFixed(2)}</p>
       </div>
       <div className="sidebar-footer">
         <Link to="/checkout">
-          <button className="checkout-btn">Checkout</button>
+          <button className="checkout-btn rounded-2xl">Checkout</button>
         </Link>
       </div>
     </div>

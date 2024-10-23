@@ -1,76 +1,3 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "../../css/banner.css";
-// import "../../css/card.css";
-// import "../../css/CardGrid.css";
-// import "../../css/button.css";
-// import { FaArrowAltCircleRight } from "react-icons/fa";
-// import login from "../../asset/login.png";
-// // Carousel item component, renders each carousel slide
-// const Item = ({ item, index }) => (
-//   <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
-//     <Link to={item.to}>
-//       <img src={item.img} className="img-fluid banner-image" alt={item.title} />
-//       <div className="gradient-overlay" /> {/* Gradient overlay here */}
-//     </Link>
-//   </div>
-// );
-
-// const Indicator = ({ item, index }) => (
-//   <li
-//     data-bs-target={`#${item}`}
-//     data-bs-slide-to={index}
-//     className={`${index === 0 ? "active" : ""}`}
-//     style={{ listStyleType: "none" }}
-//   />
-// );
-
-// const Banner = (props) => {
-//   return (
-//     <div className="row banner-section border border-danger" >
-//       {/* Slider section with col-8 */}
-//       <div className="col-9 ">
-//         <div
-//           id={props.id}
-//           className={`carousel slide banner-height  ${props.className}`}
-//           data-bs-ride="carousel"
-//         >
-//           {/* Carousel indicators for slide navigation */}
-//           <ol className="carousel-indicators">
-//             {props.data.map((item, index) => (
-//               <Indicator item={props.id} index={index} key={index} />
-//             ))}
-//           </ol>
-
-//           {/* Carousel inner section with slides */}
-//           <div className="carousel-inner">
-//             {props.data.map((item, index) => (
-//               <Item item={item} index={index} key={index} />
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Image section with col-4 */}
-//       <div className="col-3 d-flex align-items-center justify-content-center">
-//         <Link to="/account/signin" className="pt-5">
-//           {" "}
-//           {/* Wrap the image inside a Link component */}
-//           <img
-//             src={login}
-//             alt="Side Image"
-//             className="img-fluid banner-login-img"
-//             style={{ maxHeight: "100%" }}
-//           />
-//         </Link>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Banner;
-
-
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -80,8 +7,11 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import login from "../../asset/login.png";
 import { Link } from "react-router-dom";
+import createUser from "../../zustand/createUser";
+import toast from "react-hot-toast";
 
 export default function Banner() {
+  const { user, isAuthorized, token, logout } = createUser((state) => state)
 
   const PrevArrow = (props) => {
     const { onClick } = props;
@@ -121,6 +51,11 @@ export default function Banner() {
     dotsClass: "slick-dots slick-dots1 custom-dots",
   };
 
+  const handleSignOut = () => {
+    toast.success("Logged out successfully.")
+    logout()
+  }
+
   return (
     <div className="position-relative" id="main-banner-slider">
       <Slider {...settings}>
@@ -149,7 +84,8 @@ export default function Banner() {
       <div className="max-height-200">
         <Link to="/account/signin" className="pt-5">
           {" "}
-          <button className="btn btn-primary px-4  px-md-5 py-1 py-md-2  ">Log In</button>
+          {isAuthorized == false && <Link to={"/account/signin"}><button className="btn btn-primary px-4  px-md-5 py-1 py-md-2  ">Sign In</button></Link>}
+          {isAuthorized == true && <button onClick={handleSignOut} className="btn btn-primary px-4  px-md-5 py-1 py-md-2  ">Sign Out</button>}
         </Link>
       </div>
     </div>

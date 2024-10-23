@@ -1,0 +1,53 @@
+#EbookSlider .prev-button {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 40%;
+    border-radius: 0px;
+    transform: translateY(-50%);
+    /* top: 0px; */
+    /* left: 0; */
+    /* bottom: 0px; */
+    background-color: rgba(3, 2, 2, 0.5);
+    opacity: 0.8;
+    /* color: #3151b4; */
+    color: white;
+    padding: 5px;
+    margin: 0;
+    width: 50px;
+}
+
+.hide_button {
+    display: none;
+}
+
+#EbookSlider .card-title {
+    color: #504f4f;
+}
+
+
+#EbookSlider .next-button {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 40%;
+    border-radius: 0px;
+    /* top: 0px; */
+    /* right: 0; */
+    /* bottom: 0px; */
+    background-color: rgba(3, 2, 2, 0.5);
+    transform: translateY(-50%);
+    opacity: 0.8;
+    /* color: #3151b4; */
+    color: white;
+    padding: 5px;
+    margin: 0;
+    width: 50px;
+}
+
+.pricing-tag {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    font-family: Poppins, "sans-serif";
+}
