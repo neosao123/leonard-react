@@ -10,12 +10,19 @@ const useCartStore = create(
 
             login: (payload) => {
                 set((state) => {
+                    localStorage.setItem("token", payload.authorisation.token)
                     return { user: { ...payload.user }, token: payload.authorisation.token, isAuthorized: true }
                 })
             },
             logout: () => {
                 set((state) => {
+                    localStorage.setItem("token", "")
                     return { user: {}, token: "", isAuthorized: false }
+                })
+            },
+            addUser: (payload) => {
+                set((state) => {
+                    return { user: payload }
                 })
             }
         }),

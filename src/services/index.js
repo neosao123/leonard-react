@@ -31,3 +31,13 @@ export const ClearCart = async (key) => {
     return data;
 }
 
+export const UpdateAvatar = async (formdata) => {
+    const data = http.post("profile/update/avatar", formdata);
+    return data;
+}
+
+export const UpdateProfile = async (payload) => {
+    const data = http.put('profile/update/detail', payload);
+    return data;
+}
+
