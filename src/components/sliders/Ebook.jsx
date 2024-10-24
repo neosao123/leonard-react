@@ -4,12 +4,12 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { lazy, useRef } from "react";
 import "./slider.css"
 
-const CardProudct = lazy(()=>import("../card/CardProduct"))
+const CardProudct = lazy(() => import("../card/CardProduct"))
 
-const EbookSlider = ({ data }) => {
-    const { category_id, category_name, products } = data;
+const EbookSlider = ({ data, index }) => {
+    const { category_id, category_name, category_image, products } = data;
     const ebookSliderRef = useRef(null);
-
+    const sliderNumber = index;
     const PrevButton = (props) => {
         const { onClick, currentSlide } = props;
         return <button
@@ -36,7 +36,7 @@ const EbookSlider = ({ data }) => {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 6,
+        slidesToShow: 5,
         slidesToScroll: 1,
         leftMode: true,
         arrows: true,
@@ -46,23 +46,12 @@ const EbookSlider = ({ data }) => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    infinite: false,
-                    dots: false,
-                },
-            },
-            {
-                breakpoint: 992,
-                settings: {
                     slidesToShow: 4,
                     slidesToScroll: 1,
-                    infinite: false,
-                    dots: false,
                 },
             },
             {
-                breakpoint: 768,
+                breakpoint: 767,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 1,
@@ -71,41 +60,41 @@ const EbookSlider = ({ data }) => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 599,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 500,
-                settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
                 },
             },
+            {
+                breakpoint: 400,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            }
         ],
     };
 
     return (
         <>
-            {products?.length > 0 ? <div id="EbookSlider" className="book-slider">
-                <div className="d-flex justify-content-start align-items-center">
-                    <div className="">
-                        <h1 className="title">{category_name}</h1>
+            {products?.length > 0 ?
+                <div className="category-section book-slider" >
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-10">
+                                <div className="title">{category_name}</div>
+                            </div>
+                        </div>
+
+                        <Slider ref={ebookSliderRef} {...sliderSettings}>
+                            {products?.length > 0 && products?.map((ebook, index) => (
+                                <CardProudct key={index} {...ebook} />
+                            ))}
+                        </Slider>
                     </div>
                 </div>
-                <Slider ref={ebookSliderRef} {...sliderSettings}>
-                    {products?.length > 0 && products?.map((ebook, index) => (
-                        <CardProudct key={index} {...ebook} />
-                    ))}
-                </Slider>
-            </div> : <></>}
+                :
+                <></>
+            }
         </>
     )
 };

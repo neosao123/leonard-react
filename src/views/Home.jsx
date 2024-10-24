@@ -21,7 +21,6 @@ const Product = lazy(() => import("../components/sliders/Ebook"));
 
 const HomeView = () => {
 
-
   const { isLoading, error, data } = useQuery({
     queryKey: ['products'],
     queryFn: () => api.getBooksData()
@@ -36,29 +35,35 @@ const HomeView = () => {
     <>
       <Banner className="mb-3" id="carouselHomeBanner" />
 
-      {!isLoading ? data?.data?.map((el) => {
-        return <Product key={el?.category_id} data={el} />
-      }) : <div class="d-flex justify-content-center my-5 gap-2" >
-        <div class="spinner-grow" role="status">
-          <span class="visually-hidden">Loading...</span>
+      {!isLoading ? data?.data?.map((el, index) => {
+        return <Product key={el?.category_id} data={el} index={index + 1} />
+      }) : (
+        <div class="d-flex justify-content-center my-5 gap-2" >
+          <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="spinner-grow" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
-        <div class="spinner-grow" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>}
+      )
+      }
+
       <AboutUs />
 
       <Services />
+
       <Publication />
+
       {/* <License/> */}
       <Testimonial />
     </>

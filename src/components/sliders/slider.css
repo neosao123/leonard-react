@@ -1,4 +1,12 @@
-#EbookSlider .prev-button {
+.category-section {
+    background-color: #ffffff;
+}
+
+.category-section:nth-child(odd) {
+    background-color: #FEF9F2;
+}
+
+.category-section .prev-button {
     position: absolute;
     z-index: 1;
     left: 0;
@@ -21,33 +29,22 @@
     display: none;
 }
 
-#EbookSlider .card-title {
-    color: #504f4f;
-}
-
-
-#EbookSlider .next-button {
+.category-section .next-button {
     position: absolute;
     z-index: 1;
     right: 0;
     top: 40%;
     border-radius: 0px;
-    /* top: 0px; */
-    /* right: 0; */
-    /* bottom: 0px; */
     background-color: rgba(3, 2, 2, 0.5);
     transform: translateY(-50%);
     opacity: 0.8;
-    /* color: #3151b4; */
     color: white;
     padding: 5px;
     margin: 0;
     width: 50px;
 }
 
-.pricing-tag {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0px;
-    font-family: Poppins, "sans-serif";
+.category-section h2.title {
+    width:auto;
+    border:2px solid grey;
 }
