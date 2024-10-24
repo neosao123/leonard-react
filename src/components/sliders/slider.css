@@ -1,9 +1,13 @@
-.category-section {
+.book-slider {
     background-color: #ffffff;
 }
 
-.category-section:nth-child(odd) {
-    background-color: #FEF9F2;
+.alternate-color {
+    background-color: #d6e4fd;
+}
+
+.alternate-color:nth-child(odd) {
+    background-color: #ecf8ff;
 }
 
 .category-section .prev-button {
@@ -45,6 +49,37 @@
 }
 
 .category-section h2.title {
-    width:auto;
-    border:2px solid grey;
+    width: auto;
+    border: 2px solid grey;
+}
+
+.category-section .big-heading {
+    margin: 0 0 2rem;
+    padding: 0;
+    font-size: 1.3rem;
+    color: #050d3b;
+    font-weight: 600;
+    position: relative;
+}
+
+.category-section .big-heading::before {
+    position: absolute;
+    content: "";
+    width: 7rem;
+    height: 5px;
+    background: #c5c5c5;
+    bottom: -15px;
+    z-index: 1;
+    left: 0;
+    right: 0;
+}
+
+.category-section .big-heading::after {
+    position: absolute;
+    width: 2rem;
+    height: 5px;
+    background: #3152b4;
+    content: "";
+    left: 8rem;
+    bottom: -15px;
 }

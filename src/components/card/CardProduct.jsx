@@ -42,17 +42,8 @@ const CardProudct = ({ product_id, product_name, product_thumbnail, product_pric
                         </div>
                     </div>
                     <h3 className="card-title header-title text-ellipsis">{product_name}</h3>
-                    <p className="card-title pricing-tag">RM {product_price}</p>
+                    <p className="pricing-tag my-2">RM {product_price}</p>
                     <div className="button-head justify-content-start">
-                        {/* <Link className="dedcription-btn add-to-cart-border-color" to="#" onClick={() => handleAddToCart(product_id)}>
-                            <span className="name-descripeion" >
-                                Add to cart
-                            </span>
-                            <div className="btn-icon">
-                                <FiShoppingCart size={18} />
-                            </div>
-                        </Link> */}
-
                         <Link className="cart-btn add-to-cart-border-color" to="#" onClick={() => handleAddToCart(product_id)}>
                             <span className="name-descripeion" >
                                 Add to cart

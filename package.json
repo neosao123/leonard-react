@@ -2,7 +2,7 @@
   "name": "Leonard",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://leonardpersonality.com/shop",
+  "homepage": "https://leonardweb.neosao.online",
   "dependencies": {
     "@babel/runtime": "^7.23.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
